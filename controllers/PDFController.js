@@ -27,7 +27,7 @@ module.exports = {
 
   async descargar(req, res) {
     //Crear la factura
-    let pdf = await crearFactura("http://localhost:3000/factura");
+    let pdf = await crearFactura("http://localhost:3000/api/data");
 
     //devolver el response como pdf
 
