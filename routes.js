@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const PDFController = require("./controllers/PDFController");
+const PDFController = require("./controllers/pdf/PDFController");
+const ReportDataController = require("./controllers/report/ReportDataController");
 
 router.get("/", (req, res) => {
   res.render("home");
@@ -17,5 +18,8 @@ router.get("/plantilla", (req, res) => {
   };
   res.render("pdfs/reporte",data);
 });
+
+router.get("/api/report/data", ReportDataController.getDataPrueba);
+
 
 module.exports = router;
