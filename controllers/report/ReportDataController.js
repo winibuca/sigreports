@@ -1,8 +1,8 @@
 const oracledb = require("oracledb");
 // Configurar la conexión a Oracle Database
 const dbConfig = {
-  user: "OPS$COLOCA",
-  password: "COLFINA19C",
+  user: "apex_owner",
+  password: "Fina2023",
   connectString:
     "rds-oracle-db-siglease-dev.c1lwzofwengl.us-east-1.rds.amazonaws.com:1548/fina",
 };
@@ -27,10 +27,10 @@ module.exports = {
       )
       ORDER BY INC.INCCOL, INC.INCCOD
       `;
-  
+
       const result = await connection.execute(consulta);
       await connection.close();
-  
+
       // Transformar el resultado en un formato adecuado para la plantilla Handlebars
       const dataForTemplate = result.rows.map((row) => {
         return {
@@ -45,7 +45,7 @@ module.exports = {
           LOGO: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fminciencias.gov.co%2Ffiles%2Fdaviviendajpg&psig=AOvVaw2AN8b66Hzz34k4Xd-8oBLS&ust=1690835826981000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCKjmv7ykt4ADFQAAAAAdAAAAABAD", // La propiedad LOGO debe ser reemplazada con la URL o el contenido de la imagen que corresponde a cada fila
         };
       });
-  
+
       // Renderizar la plantilla Handlebars con los datos adecuados
       // await res.render("pdfs/reporte", { Q_1: dataForTemplate, Q_2: [] }); // En este caso, Q_2 está vacío porque no hay información para esta parte en la consulta actual
       res.status(200).json(dataForTemplate);
@@ -53,5 +53,28 @@ module.exports = {
       console.error(err);
       res.status(500).json({ error: "Error al obtener los datos" });
     }
-  }
+  },
+
+  async executePackage(req, res) {
+    // Crea la conexión a la base de datos
+    await oracledb.createPool(dbConfig);
+
+    try {
+      const connection = await oracledb.getConnection();
+
+      // Ejecuta el procedimiento almacenado
+      const result = await connection.execute(
+        `BEGIN
+            APEX_OWNER."EBA_DEMO_APPR_DATA".install_sample_data();
+             END;`
+      );
+
+      await connection.close();
+
+      res.status(200).json({ message: "Procedimiento ejecutado exitosamente", result });
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ error: "Error en el servidor" });
+    }
+  },
 };

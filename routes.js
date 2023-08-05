@@ -16,10 +16,10 @@ router.get("/plantilla", (req, res) => {
     content: "Contenido del reporte...",
     items: ["Item 1", "Item 2", "Item 3"],
   };
-  res.render("pdfs/reporte",data);
+  res.render("pdfs/reporte", data);
 });
 
-router.get("/api/report/data", ReportDataController.getDataPrueba);
-
+router.post("/api/report/data", ReportDataController.getDataPrueba);
+router.post("/api/report/execute-procedure", ReportDataController.executePackage);
 
 module.exports = router;
