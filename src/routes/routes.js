@@ -1,14 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const PDFController = require("./controllers/pdf/PDFController");
-const ReportDataController = require("./controllers/report/ReportDataController");
+const ReportDataController = require("../controllers/ReportDataController");
 
 router.get("/", (req, res) => {
   res.render("home");
 });
 
-router.get("/factura", PDFController.factura);
-router.get("/descargar", PDFController.descargar);
+
 
 router.get("/plantilla", (req, res) => {
   const data = {

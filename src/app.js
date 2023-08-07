@@ -23,7 +23,7 @@ app.set("view engine", "handlebars");
 app.set("views", "./views");
 
 // Importa el enrutador
-const routes = require("./routes");
+const routes = require("./routes/routes");
 
 // Aplica el enrutador a la ruta raíz "/"
 app.use("/", routes);
