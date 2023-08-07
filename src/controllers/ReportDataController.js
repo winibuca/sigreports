@@ -1,11 +1,6 @@
 const oracledb = require("oracledb");
 // Configurar la conexión a Oracle Database
-const dbConfig = {
-  user: "apex_owner",
-  password: "Fina2023",
-  connectString:
-    "rds-oracle-db-siglease-dev.c1lwzofwengl.us-east-1.rds.amazonaws.com:1548/fina",
-};
+const dbConfig = require("../../config/DatabaseConfig");
 
 module.exports = {
   factura(req, res) {
