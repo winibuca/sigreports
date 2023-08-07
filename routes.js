@@ -19,7 +19,9 @@ router.get("/plantilla", (req, res) => {
   res.render("pdfs/reporte", data);
 });
 
-router.post("/api/report/data", ReportDataController.getDataPrueba);
+router.get("/api/report/data", ReportDataController.getDataPrueba);
 router.post("/api/report/execute-procedure", ReportDataController.executePackage);
+router.post("/api/report/getParticipantForRole", ReportDataController.getParticipantForRole);
+router.post("/api/report/pruebaApi", ReportDataController.pruebaApi);
 
 module.exports = router;

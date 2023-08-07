@@ -71,7 +71,59 @@ module.exports = {
 
       await connection.close();
 
-      res.status(200).json({ message: "Procedimiento ejecutado exitosamente", result });
+      res
+        .status(200)
+        .json({ message: "Procedimiento ejecutado exitosamente", result });
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ error: "Error en el servidor" });
+    }
+  },
+
+  async getParticipantForRole(req, res) {
+    // Crea la conexión a la base de datos
+    await oracledb.createPool(dbConfig);
+
+    try {
+      const connection = await oracledb.getConnection();
+
+      // Ejecuta el procedimiento almacenado
+      const result = await connection.execute(
+        `BEGIN
+        APEX_OWNER."EBA_DEMO_APPR".get_participant_for_role(:p_task_def_static_id,:p_job,:p_proposed_sal,:p_role);
+             END;`,
+        {
+          p_task_def_static_id: "SALARY_CHANGE",
+          p_job: null,
+          p_proposed_sal: 4000,
+          p_role: "APPROVER",
+        }
+      );
+
+      await connection.close();
+
+      res
+        .status(200)
+        .json({ message: "Procedimiento ejecutado exitosamente", result });
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ error: "Error en el servidor" });
+    }
+  },
+
+  async pruebaApi(req, res) {
+    try {
+      /**
+       * Asumiendo que esta es la data que viene de la base de datos ejecutando los procedimientos almacenados
+       */
+      let result = {
+        nombre: "Nicolas",
+        apellido: "Buitrago Camacho",
+        edad:"24"
+      };
+      res
+        .status(200)
+        .json({ message: "Procedimiento ejecutado exitosamente", result });
     } catch (error) {
       console.error("Error:", error);
       res.status(500).json({ error: "Error en el servidor" });

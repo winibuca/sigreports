@@ -1,19 +1,23 @@
-<h1>Factura</h1>
-<table class="table">
-  <tr>
-    <td>Hola</td>
-    <td>Mundo</td>
-  </tr>
-  <tr>
-    <td>Hola</td>
-    <td>Mundo</td>
-  </tr>
-  <tr>
-    <td>Hola</td>
-    <td>Mundo</td>
-  </tr>
-  <tr>
-    <td>Hola</td>
-    <td>Mundo</td>
-  </tr>
-</table>
+<h1>{{ title }}</h1>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Precio</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each items}}
+      <tr>
+        <td>{{ name }}</td>
+        <td>{{ price }}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2">Total: {{ total }}</td>
+      </tr>
+    </tfoot>
+  </table>
