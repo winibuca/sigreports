@@ -1,9 +1,22 @@
 const { renderHandlebarsTemplate } = require("../utils/handlebarUtils");
 const { generatePdfFromHtml } = require("../utils/puppeteerUtils");
+const { getCrrsopcrData } = require("../models/crrsopcrReport");
 const oracledb = require("oracledb");
 const dbConfig = require("../../config/DatabaseConfig");
 
 module.exports = {
+  async crrsopcrReport(req, res) {
+    try {
+      const context = req.body;
+      const result = await getCrrsopcrData(context);
+      res
+        .status(200)
+        .json({ message: "Procedimiento ejecutado exitosamente", result });
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ error: "Error en el servidor" });
+    }
+  },
   async getPrueba2(req, res) {
     try {
       const data = {
@@ -74,36 +87,9 @@ module.exports = {
     }
   },
 
-  async executePackage(req, res) {
-    // Crea la conexión a la base de datos
-    await oracledb.createPool(dbConfig);
-
-    try {
-      const connection = await oracledb.getConnection();
-
-      // Ejecuta el procedimiento almacenado
-      const result = await connection.execute(
-        `BEGIN
-            APEX_OWNER."EBA_DEMO_APPR_DATA".install_sample_data();
-             END;`
-      );
-
-      await connection.close();
-
-      res
-        .status(200)
-        .json({ message: "Procedimiento ejecutado exitosamente", result });
-    } catch (error) {
-      console.error("Error:", error);
-      res.status(500).json({ error: "Error en el servidor" });
-    }
-  },
-
   async getParticipantForRole(req, res) {
-    // Crea la conexión a la base de datos
-    await oracledb.createPool(dbConfig);
-
     try {
+      await oracledb.createPool(dbConfig);
       const connection = await oracledb.getConnection();
 
       // Ejecuta el procedimiento almacenado
