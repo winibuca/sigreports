@@ -9,9 +9,7 @@ module.exports = {
     try {
       const context = req.body;
       const result = await getCrrsopcrData(context);
-      res
-        .status(200)
-        .json({ message: "Procedimiento ejecutado exitosamente", result });
+      await res.status(200).json(result);
     } catch (error) {
       console.error("Error:", error);
       res.status(500).json({ error: "Error en el servidor" });
