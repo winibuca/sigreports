@@ -9,7 +9,7 @@ module.exports = {
     try {
       const context = req.body;
       const result = await getCrrsopcrData(context);
-      await res.status(200).json(result);
+      res.status(200).json(result);
     } catch (error) {
       console.error("Error:", error);
       res.status(500).json({ error: "Error en el servidor" });
@@ -28,7 +28,7 @@ module.exports = {
       };
 
       // Renderiza la plantilla Handlebars en HTML
-      const renderedHtml = await renderHandlebarsTemplate("pdfs/factura", data);
+      const renderedHtml = await renderHandlebarsTemplate("pdfs/crrsopcr", data);
 
       // Genera el PDF desde el HTML renderizado
       const pdf = await generatePdfFromHtml(renderedHtml);
