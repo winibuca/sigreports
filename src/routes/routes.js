@@ -18,5 +18,7 @@ router.get("/report/template", TemplateController.renderTemplate); //Muestra el 
 
 router.post("/report/crrsopcr", ReportDataController.crrsopcrReport); //Genera la data mediante un post
 
+router.post("/report/anrmoter", ReportDataController.anrmoterReport); //Genera la data mediante un post
+
 
 module.exports = router;

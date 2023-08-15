@@ -15,6 +15,16 @@ module.exports = {
       res.status(500).json({ error: "Error en el servidor" });
     }
   },
+  async anrmoterReport(req, res) {
+    try {
+      const context = req.body;
+      const result = await getAnrmoterReportData(context);
+      res.status(200).json(result);
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ error: "Error en el servidor" });
+    }
+  },
   async getPrueba2(req, res) {
     try {
       const data = {
