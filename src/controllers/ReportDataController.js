@@ -1,6 +1,7 @@
 const { renderHandlebarsTemplate } = require("../utils/handlebarUtils");
 const { generatePdfFromHtml } = require("../utils/puppeteerUtils");
 const { getCrrsopcrData } = require("../models/crrsopcrReport");
+const { getAnrmoterReportData } = require("../models/anrmoterReport");
 const oracledb = require("oracledb");
 const dbConfig = require("../../config/DatabaseConfig");
 
@@ -38,7 +39,10 @@ module.exports = {
       };
 
       // Renderiza la plantilla Handlebars en HTML
-      const renderedHtml = await renderHandlebarsTemplate("pdfs/crrsopcr", data);
+      const renderedHtml = await renderHandlebarsTemplate(
+        "pdfs/crrsopcr",
+        data
+      );
 
       // Genera el PDF desde el HTML renderizado
       const pdf = await generatePdfFromHtml(renderedHtml);

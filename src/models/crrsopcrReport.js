@@ -66,37 +66,4 @@ module.exports = {
     return result;
   },
 
-  async getAnrmoterReportData(context) {
-    const { p_ter1, p_impvi, p_impca } = context;
-    console.log(sol_unidad, sol_oficina, sol_solicitud);
-    // Crea la conexión a la base de datos
-    await oracledb.createPool(dbConfig);
-
-    const connection = await oracledb.getConnection();
-
-    let query = `
-    BEGIN
-      pqbd_apex_anrmoter.pbd_apex_totales_tabla(:p_ter1      => v_ter1,
-        :p_impvi     => v_impvi,
-        :p_impca     => v_impca,
-        :p_total_mo  => v_total_mo,
-        :p_total_mop => v_total_mop);
-    END;
-    `;
-
-    const bindVars = {
-      p_ter1: { val: p_ter1 },
-      p_impvi: { val: p_impvi },
-      p_impca: { val: p_impca },
-      p_total_mo: { dir: oracledb.BIND_OUT, type: oracledb.STRING },
-      p_total_mop: { dir: oracledb.BIND_OUT, type: oracledb.STRING },
-    };
-
-    // Ejecuta el procedimiento almacenado
-    const result = await connection.execute(query, bindVars);
-    await console.dir(result)
-    await connection.close();
-
-    return result;
-  },
 };
