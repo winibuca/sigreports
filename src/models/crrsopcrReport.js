@@ -40,7 +40,7 @@ module.exports = {
       sol_solicitud,
       i: {
         dir: oracledb.BIND_OUT,
-        type: oracledb.DB_TYPE_OBJECT,
+        type: 'pqbd_apex_crrsopcr.g_tipo_rio'
       },
       // v_logo: { type: oracledb.STRING, dir: oracledb.BIND_OUT },
       //v_contra_estruc: { type: oracledb.STRING, dir: oracledb.BIND_OUT },
