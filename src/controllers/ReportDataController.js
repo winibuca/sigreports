@@ -1,9 +1,15 @@
 const { renderHandlebarsTemplate } = require("../utils/handlebarUtils");
 const { generatePdfFromHtml } = require("../utils/puppeteerUtils");
-const { getCrrsopcrData } = require("../models/crrsopcrReport");
-const { getTotalesTabla, getResumenTabla, getSelectClasico } = require("../models/anrmoterReport");
+const { getCrrsopcrData } = require("../models/crrsopcr");
+const {
+  getTotalesTabla,
+  getResumenTabla,
+  getSelectClasico,
+} = require("../models/anrmoter");
+const crraprprModel = require("../models/crraprpr");
 const oracledb = require("oracledb");
 const dbConfig = require("../../config/DatabaseConfig");
+const { json } = require("body-parser");
 
 module.exports = {
   async crrsopcrReport(req, res) {
@@ -30,6 +36,22 @@ module.exports = {
       res.status(500).json({ error: "Error en el servidor" });
     }
   },
+
+  async crraprprReport(req, res) {
+    try {
+      const context = req.body;
+      let response;
+      let colResumenTabla3 = await crraprprModel.getResumenTabla3(context);
+      colResumenTabla3 = JSON.parse(colResumenTabla3);
+
+      response = { colResumenTabla3 };
+      res.status(200).json(response);
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ error: "Error en el servidor" });
+    }
+  },
+
   async getPrueba2(req, res) {
     try {
       const data = {
