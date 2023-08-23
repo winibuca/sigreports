@@ -1,7 +1,7 @@
 const { renderHandlebarsTemplate } = require("../utils/handlebarUtils");
 const { generatePdfFromHtml } = require("../utils/puppeteerUtils");
 const { getCrrsopcrData } = require("../models/crrsopcrReport");
-const { getTotalesTabla, getResumenTabla } = require("../models/anrmoterReport");
+const { getTotalesTabla, getResumenTabla, getSelectClasico } = require("../models/anrmoterReport");
 const oracledb = require("oracledb");
 const dbConfig = require("../../config/DatabaseConfig");
 
@@ -20,7 +20,7 @@ module.exports = {
     try {
       const context = req.body;
       let result;
-      const totalesTabla = await getTotalesTabla(context);
+      const totalesTabla = await getSelectClasico(context);
       // const resumenTabla = await getResumenTabla(context);
 
       result = { totalesTabla };
