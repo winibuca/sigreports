@@ -42,9 +42,11 @@ module.exports = {
       const context = req.body;
       let response;
       let colResumenTabla3 = await crraprprModel.getResumenTabla3(context);
+      let colResumenTabla4 = await crraprprModel.getResumenTabla4(context);
       colResumenTabla3 = JSON.parse(colResumenTabla3);
+      colResumenTabla4 = JSON.parse(colResumenTabla4);
 
-      response = { colResumenTabla3 };
+      response = { colResumenTabla3, colResumenTabla4 };
       res.status(200).json(response);
     } catch (error) {
       console.error("Error:", error);
