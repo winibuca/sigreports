@@ -6,10 +6,9 @@ const {
   getResumenTabla,
   getSelectClasico,
 } = require("../models/anrmoter");
-const crraprprModel = require("../models/crraprpr");
 const oracledb = require("oracledb");
 const dbConfig = require("../../config/DatabaseConfig");
-const { json } = require("body-parser");
+const crraprprService = require("../services/crraprprService");
 
 module.exports = {
   async crrsopcrReport(req, res) {
@@ -40,13 +39,7 @@ module.exports = {
   async crraprprReport(req, res) {
     try {
       const context = req.body;
-      let response;
-      let colResumenTabla3 = await crraprprModel.getResumenTabla3(context);
-      let colResumenTabla4 = await crraprprModel.getResumenTabla4(context);
-      colResumenTabla3 = JSON.parse(colResumenTabla3);
-      colResumenTabla4 = JSON.parse(colResumenTabla4);
-
-      response = { colResumenTabla3, colResumenTabla4 };
+      let response = await crraprprService.getCrraprprData(context);
       res.status(200).json(response);
     } catch (error) {
       console.error("Error:", error);

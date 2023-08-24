@@ -1,6 +1,24 @@
 const { renderHandlebarsTemplate } = require("../utils/handlebarUtils");
+const crraprprService = require("../services/crraprprService");
 
 module.exports = {
+  async renderTemplateCrraprpr(req, res) {
+    try {
+      const context = req.params;
+      const data = await crraprprService.getCrraprprData(context);
+
+      // Renderiza la plantilla Handlebars en HTML
+      const renderedHtml = await renderHandlebarsTemplate(
+        "pdfs/crraprpr",
+        data
+      );
+
+      res.send(renderedHtml);
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ error: "Error en el servidor" });
+    }
+  },
   async renderTemplate(req, res) {
     try {
       const data = {
@@ -14,12 +32,15 @@ module.exports = {
       };
 
       // Renderiza la plantilla Handlebars en HTML
-      const renderedHtml = await renderHandlebarsTemplate("pdfs/crrsopcr", data);
+      const renderedHtml = await renderHandlebarsTemplate(
+        "pdfs/crrsopcr",
+        data
+      );
 
       res.send(renderedHtml);
     } catch (error) {
       console.error("Error:", error);
       res.status(500).json({ error: "Error en el servidor" });
     }
-  }
+  },
 };
