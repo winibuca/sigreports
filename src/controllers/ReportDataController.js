@@ -40,18 +40,20 @@ module.exports = {
     try {
       const context = req.params;
       let data = await crraprprService.getCrraprprData(context);
+      // res.status(200).json(data);
+      
       // Renderiza la plantilla Handlebars en HTML
-      const renderedHtml = await renderHandlebarsTemplate(
-        "pdfs/crraprpr",
-        data
-      );
+        const renderedHtml = await renderHandlebarsTemplate(
+          "pdfs/crraprpr",
+          data
+        );
 
-      // Genera el PDF desde el HTML renderizado
-      const pdf = await generatePdfFromHtml(renderedHtml);
+        // Genera el PDF desde el HTML renderizado
+        const pdf = await generatePdfFromHtml(renderedHtml);
 
-      // Envía el PDF como respuesta
-      res.contentType("application/pdf");
-      res.send(pdf);
+        // Envía el PDF como respuesta
+        res.contentType("application/pdf");
+        res.send(pdf);
     } catch (error) {
       console.error("Error:", error);
       res.status(500).json({ error: "Error en el servidor" });
