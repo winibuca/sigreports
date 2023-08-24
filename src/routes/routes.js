@@ -20,6 +20,6 @@ router.get("/report/template/crraprpr/:p_codvor/:p_ofcsol/:p_codsol", TemplateCo
 
 router.post("/report/crrsopcr", ReportDataController.crrsopcrReport); //Genera la data mediante un post
 router.post("/report/anrmoter", ReportDataController.anrmoterReport); //Genera la data mediante un post
-router.post("/report/crraprpr", ReportDataController.crraprprReport); //Genera la data mediante un post
+router.get("/report/crraprpr/:p_codvor/:p_ofcsol/:p_codsol", ReportDataController.crraprprReport); //Genera la data mediante un post
 
 module.exports = router;
