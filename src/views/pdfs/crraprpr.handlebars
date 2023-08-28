@@ -1,101 +1,160 @@
+<style>
+  *{ font-size: 11px; text-align: justify};
+
+</style>
 <div class="container-fluid">
-  <div class="row d-flex justify-content-center">
-    LOGO DAVIVIENDA
-  </div>
-  <div class="row d-flex justify-content-end">
-    005 UNIDAD DE VEHICULO PRODUCTIVO
-  </div>
-  <div class="row d-flex justify-content-end">
-    CIUDAD, FECHA
-  </div>
-  <div class="row d-flex justify-content-start">
-    CIUDAD, FECHA
-  </div>
-  Apreciados señores,
-  <br />
-  <b> {{colResumenTabla3.v_nombrepro}}</b>
-  <br />
-  {{colResumenTabla3.v_numdirpro}},
-  {{colResumenTabla3.v_depdes}}
+  <div class="px-5 py-5">
+    <div class="row d-flex justify-content-center">
+      <img src="{{logo}}" alt="LOGO DAVIVIENDA LEASING" />
+    </div>
+    <br /><br />
 
-  <div class="row text-center">
-    <b> Asunto:</b>
-    Solicitud Crédito/Leasing Vehículo No.
-    <b> XXXXX </b>
-    - NOMBRE DE LA PERSONA
-  </div>
-  <p>Reciba un cordial saludo de Davivienda. Con el ánimo de contribuir en la
-    construcción del patrimonio de los colombianos, queremos informarle que la
-    solicitud de Leasing de Vehículo de nuestro clienteXXXXXXXXXXXXXXXXXXXXXXXXX
-    ha sido aprobada y tendrá una vigencia
-    <span style="color:blue"> de ciento veinte (120) </span>
-    días calendario, contados después de enviada esta comunicación al cliente.
+    <div class="row d-flex justify-content-end">
+      005 UNIDAD DE VEHICULO PRODUCTIVO
+    </div>
+    <div class="row d-flex justify-content-end">
+      {{resumenCliente.V_OFIDES}},
+      {{resumenCliente.V_FECPCO}}
+    </div><br>
+    Apreciados señores,
     <br />
-    A continuación relacionamos los requisitos de la aprobación del crédito:
-  </p>
+    <b> {{colResumenTabla3.v_nombrepro}}</b>
+    <br />
+    {{colResumenTabla3.v_tdcdes}},{{colResumenTabla3.v_depdes}} <br><br><br>
 
-  <h4>Información General:
-  </h4>
-  <table class="table">
-    <tbody>
-      <tr>
-        <td>Valor del vehículo</td>
-        <td><b>{{colResumenTabla4.v_vehiculo}}</b></td>
-      </tr>
-      <tr>
-        <td>Canon Extraordinario </td>
-        <td><b>{{colResumenTabla4.v_canoext}}</b></td>
-      </tr>
-      <tr>
-        <td>Valor a financiar</td>
-        <td><b>{{colResumenTabla4.v_valfinan}}</b></td>
-      </tr>
-      <tr>
-        <td>Plazo</td>
-        <td><b>{{colResumenTabla4.v_plazo}}</b></td>
-      </tr>
-      <tr>
-        <td>Plazo Mínimo</td>
-        <td><b>{{colResumenTabla4.v_plamin}} meses</b></td>
-      </tr>
-      <tr>
-        <td>Plazo Máximo</td>
-        <td><b>{{colResumenTabla4.v_plamax}} meses</b></td>
-      </tr>
-      <tr>
-        <td>Tipo de Financiación</td>
-        <td><b>{{colResumenTabla4.v_modcre}} meses</b></td>
-      </tr>
-      <tr>
-        <td>Tipo de Servicio
-        </td>
-        <td><b>{{colResumenTabla4.v_matric}}</b></td>
-      </tr>
-      <tr>
-        <td>Descripción del Activo </td>
-        <td><b>{{colResumenTabla4.v_desact}}</b></td>
-      </tr>
-      <tr>
-        <td>Garantía Adicional 1</td>
-        <td><b>{{colResumenTabla4.v_garan1}}</b></td>
-      </tr>
-      <tr>
-        <td>Garantía Adicional 2</td>
-        <td><b>{{colResumenTabla4.v_garan2}}</b></td>
-      </tr>
-      <tr>
-        <td>Garantía Adicional 3</td>
-        <td><b>{{colResumenTabla4.v_garan3}}</b></td>
-      </tr>
-      <tr>
-        <td>Garantía Adicional 4</td>
-        <td><b>{{colResumenTabla4.v_garan4}}</b></td>
-      </tr>
-      <tr>
-        <td>Garantía Adicional 5</td>
-        <td><b>{{colResumenTabla4.v_garan5}}</b></td>
-      </tr>
-    </tbody>
-  </table>
+    <p class="text-center">
+      <b> Asunto: </b>Solicitud Crédito/Leasing Vehículo No.
+      <b>{{resumenCliente.V_SOLVOR1}}</b>
+      -
+      {{resumenCliente.V_NOMBRE}}
+    </p> <br> <br>
+    <p>Reciba un cordial saludo de Davivienda. Con el ánimo de contribuir en la
+      construcción del patrimonio de los colombianos, queremos informarle que la
+      solicitud de{{resumenCliente.V_MODCRE}}
+      de nuestro cliente
+      {{resumenCliente.V_NOMBRE}}
+      ha sido aprobada y tendrá una vigencia de ciento veinte (120) días
+      calendario, contados después de enviada esta comunicación al cliente.
+      <br />
+      A continuación relacionamos los requisitos de la aprobación del crédito:
+    </p>
+<br>
+    <h4>Información General:
+    </h4>
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <td>Valor del vehículo</td>
+          <td class="d-flex justify-content-end"><b
+            >{{colResumenTabla4.v_vehiculo}}</b></td>
+        </tr>
+        <tr>
+          <td>Canon Extraordinario </td>
+          <td class="d-flex justify-content-end"><b
+            >{{colResumenTabla4.v_canoext}}</b></td>
+        </tr>
+        <tr>
+          <td>Valor a financiar</td>
+          <td class="d-flex justify-content-end"><b
+            >{{colResumenTabla4.v_valfinan}}</b></td>
+        </tr>
+        <tr>
+          <td>Plazo</td>
+          <td class="d-flex justify-content-end"><b
+            >{{colResumenTabla4.v_plazo}}</b></td>
+        </tr>
+        <tr>
+          <td>Plazo Mínimo</td>
+          <td class="d-flex justify-content-end"><b
+            >{{colResumenTabla4.v_plamin}} meses</b></td>
+        </tr>
+        <tr>
+          <td>Plazo Máximo</td>
+          <td class="d-flex justify-content-end"><b
+            >{{colResumenTabla4.v_plamax}} meses</b></td>
+        </tr>
+        <tr>
+          <td>Tipo de Financiación</td>
+          <td class="d-flex justify-content-end"><b
+            >{{colResumenTabla4.v_modcre}} meses</b></td>
+        </tr>
+        <tr>
+          <td>Tipo de Servicio
+          </td>
+          <td class="d-flex justify-content-end"><b
+            >{{colResumenTabla4.v_matric}}</b></td>
+        </tr>
+        <tr>
+          <td>Descripción del Activo </td>
+          <td class="d-flex justify-content-end"><b
+            >{{colResumenTabla4.v_desact}}</b></td>
+        </tr>
+        <tr>
+          <td>Garantía Adicional 1</td>
+          <td class="d-flex justify-content-end"><b
+            >{{colResumenTabla4.v_garan1}}</b></td>
+        </tr>
+        <tr>
+          <td>Garantía Adicional 2</td>
+          <td class="d-flex justify-content-end"><b
+            >{{colResumenTabla4.v_garan2}}</b></td>
+        </tr>
+        <tr>
+          <td>Garantía Adicional 3</td>
+          <td class="d-flex justify-content-end"><b
+            >{{colResumenTabla4.v_garan3}}</b></td>
+        </tr>
+        <tr>
+          <td>Garantía Adicional 4</td>
+          <td class="d-flex justify-content-end"><b
+            >{{colResumenTabla4.v_garan4}}</b></td>
+        </tr>
+        <tr>
+          <td>Garantía Adicional 5</td>
+          <td class="d-flex justify-content-end"><b
+            >{{colResumenTabla4.v_garan5}}</b></td>
+        </tr>
+      </tbody>
+    </table>
 
+    <b>Condiciones comité</b>
+    <br />
+    <p>{{resumenCliente.V_CONCOM}}</p>
+  </div>
+  <div style="page-break-before: always;"></div>
+  <!-- Salto de página -->
+  <div class="container py-5">
+  </div>
+
+  <div class="container border py-5">
+
+    <h3>Condiciones para el desembolso:</h3>
+    <ol>
+      <li class="py-3">Entrega de la factura pro-forma del vehículo.</li>
+      <li class="py-3">Cumplimiento por parte del cliente de los requisitos
+        exigidos para el desembolso y descritos en la carta de aprobación.</li>
+      <li class="py-3">Mantener las condiciones patrimoniales y de solvencia del
+        cliente, tomadas en cuenta al momento de la evaluación, y que haya
+        disponibilidad de recursos en la tesorería de Davivienda o que no se
+        presenten actos o hechos constitutivos de fuerza mayor o caso fortuito,
+        que puedan afectar o afecten la financiación.</li>
+      <li class="py-3">Al resultado de las Inspecciones oculares, las cuales el
+        Banco Davivienda S.A. se reserva el derecho de realizar, para verificar
+        la veracidad de la información suministrada.</li>
+      <li class="py-3">El desembolso estará sujeto a la legalización de las
+        garantías exigidas por Davivienda al cliente.</li>
+    </ol>
+
+    <p>Vendedor de Concesionario: {{resumenCliente.V_IDVEN}}</p>
+    <br /><br />
+    <div>
+      Para información adicional, lo invitamos a comunicarse con nosotros a
+      través de la línea 01- 8000-123838, desde cualquier lugar del país, o en
+      Bogotá al 338-38 38, donde uno de nuestros asesores con gusto lo atenderá
+      <br /><br /><br />
+      Atentamente,
+      <br />BANCO DAVIVIENDA S.A.
+
+    </div>
+  </div>
 </div>

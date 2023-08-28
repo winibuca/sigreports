@@ -16,10 +16,12 @@ router.get("/generate-pdf", ReportDataController.getPrueba2); //Genera un pdf me
 
 router.get("/report/template", TemplateController.renderTemplate); //Muestra el template con get
 
-router.get("/report/template/crraprpr/:p_codvor/:p_ofcsol/:p_codsol", TemplateController.renderTemplateCrraprpr); //Muestra el template con get
 
 router.post("/report/crrsopcr", ReportDataController.crrsopcrReport); //Genera la data mediante un post
 router.post("/report/anrmoter", ReportDataController.anrmoterReport); //Genera la data mediante un post
-router.get("/report/crraprpr/:p_codvor/:p_ofcsol/:p_codsol", ReportDataController.crraprprReport); //Genera la data mediante un post
+
+router.get("/report/pdf/crraprpr/:p_codvor/:p_ofcsol/:p_codsol", ReportDataController.crraprprReport); //Genera el pdf mediante una petición get
+router.get("/report/template/crraprpr/:p_codvor/:p_ofcsol/:p_codsol", TemplateController.renderTemplateCrraprpr); //Muestra el template con get
+router.get("/report/data/crraprpr/:p_codvor/:p_ofcsol/:p_codsol", ReportDataController.crraprprReportData); //Genera la data mediante un get
 
 module.exports = router;

@@ -59,6 +59,16 @@ module.exports = {
       res.status(500).json({ error: "Error en el servidor" });
     }
   },
+  async crraprprReportData(req, res) {
+    try {
+      const context = req.params;
+      let data = await crraprprService.getCrraprprData(context);
+      res.status(200).json(data);
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).json({ error: "Error en el servidor" });
+    }
+  },
 
   async getPrueba2(req, res) {
     try {
