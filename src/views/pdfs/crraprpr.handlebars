@@ -1,11 +1,10 @@
 <style>
   *{ font-size: 11px; text-align: justify};
-
 </style>
 <div class="container-fluid">
-  <div class="px-5 py-5">
+  <div class="px-5 py-5 mx-5">
     <div class="row d-flex justify-content-center">
-      <img src="{{logo}}" alt="LOGO DAVIVIENDA LEASING" />
+      <img style="width: 20%;" src="/views/assets/Logo.jpg" alt="LOGO DAVIVIENDA LEASING" />
     </div>
     <br /><br />
 
@@ -15,19 +14,22 @@
     <div class="row d-flex justify-content-end">
       {{resumenCliente.V_OFIDES}},
       {{resumenCliente.V_FECPCO}}
-    </div><br>
+    </div><br />
     Apreciados señores,
     <br />
     <b> {{colResumenTabla3.v_nombrepro}}</b>
     <br />
-    {{colResumenTabla3.v_tdcdes}},{{colResumenTabla3.v_depdes}} <br><br><br>
+    {{colResumenTabla3.v_tdcdes}},{{colResumenTabla3.v_depdes}}
+    <br /><br /><br />
 
     <p class="text-center">
       <b> Asunto: </b>Solicitud Crédito/Leasing Vehículo No.
       <b>{{resumenCliente.V_SOLVOR1}}</b>
       -
       {{resumenCliente.V_NOMBRE}}
-    </p> <br> <br>
+    </p>
+    <br />
+    <br />
     <p>Reciba un cordial saludo de Davivienda. Con el ánimo de contribuir en la
       construcción del patrimonio de los colombianos, queremos informarle que la
       solicitud de{{resumenCliente.V_MODCRE}}
@@ -38,7 +40,7 @@
       <br />
       A continuación relacionamos los requisitos de la aprobación del crédito:
     </p>
-<br>
+    <br />
     <h4>Información General:
     </h4>
     <table class="table table-borderless">
@@ -60,8 +62,8 @@
         </tr>
         <tr>
           <td>Plazo</td>
-          <td class="d-flex justify-content-end"><b
-            >{{colResumenTabla4.v_plazo}}</b></td>
+          <td class="d-flex justify-content-end"><b>{{colResumenTabla4.v_plazo}}
+              meses</b></td>
         </tr>
         <tr>
           <td>Plazo Mínimo</td>
@@ -116,8 +118,8 @@
         </tr>
       </tbody>
     </table>
-
-    <b>Condiciones comité</b>
+    <br />
+    <h4>Condiciones comité</h4>
     <br />
     <p>{{resumenCliente.V_CONCOM}}</p>
   </div>
@@ -126,10 +128,11 @@
   <div class="container py-5">
   </div>
 
-  <div class="container border py-5">
+  <div class="border px-5 py-5 mx-5">
 
     <h3>Condiciones para el desembolso:</h3>
-    <ol>
+    <br />
+    <ol class="px-5">
       <li class="py-3">Entrega de la factura pro-forma del vehículo.</li>
       <li class="py-3">Cumplimiento por parte del cliente de los requisitos
         exigidos para el desembolso y descritos en la carta de aprobación.</li>
@@ -144,16 +147,16 @@
       <li class="py-3">El desembolso estará sujeto a la legalización de las
         garantías exigidas por Davivienda al cliente.</li>
     </ol>
-
+    <br />
     <p>Vendedor de Concesionario: {{resumenCliente.V_IDVEN}}</p>
     <br /><br />
     <div>
       Para información adicional, lo invitamos a comunicarse con nosotros a
       través de la línea 01- 8000-123838, desde cualquier lugar del país, o en
       Bogotá al 338-38 38, donde uno de nuestros asesores con gusto lo atenderá
-      <br /><br /><br />
-      Atentamente,
-      <br />BANCO DAVIVIENDA S.A.
+      <br /><br /><br /><br />
+      Atentamente,<br />
+      <br /><h4>BANCO DAVIVIENDA S.A.</h4>
 
     </div>
   </div>
